@@ -1,35 +1,38 @@
 import React from "react"
 import ReactDOM from "react-dom"
+import App from "./App"
+import firebase from "./config/firebase"
 import { createStore } from "redux"
-import firebase from "./firebase"
-import { ReactReduxFirebaseProvider } from "react-redux-firebase"
+import { Provider } from "react-redux"
 import { createFirestoreInstance } from "redux-firestore"
 import { rootReducer } from "./redux/reducers"
-import { Provider } from "react-redux"
 import { BrowserRouter } from "react-router-dom"
-import App from "./App"
+import { ReactReduxFirebaseProvider } from "react-redux-firebase"
+
+const rrfConfig = {
+  userProfile: "users",
+  useFirestoreForProfile: true,
+}
 
 const initialState = {}
 const store = createStore(rootReducer, initialState)
 
-const firebaseDatabaseProps = {
+const rrfProps = {
   firebase,
-  firebaseDatabaseConfig: {
-    userProfile: "users",
-    useFirestoreForProfile: true,
-  },
+  config: rrfConfig,
   dispatch: store.dispatch,
   createFirestoreInstance,
 }
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ReactReduxFirebaseProvider {...firebaseDatabaseProps}>
+      <ReactReduxFirebaseProvider {...rrfProps}>
         <BrowserRouter>
           <App />
         </BrowserRouter>
       </ReactReduxFirebaseProvider>
     </Provider>
   </React.StrictMode>,
+
   document.getElementById("root")
 )
