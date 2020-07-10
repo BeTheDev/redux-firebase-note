@@ -6,23 +6,34 @@ const SignIn = () => {
   const firebase = useFirebase()
   const history = useHistory()
 
-  const googleSignIn = () => {
+  const signInWithGoogle = () => {
     firebase
-      .login({
-        provider: "google",
-        type: "popup",
-      })
+      .auth()
+      .setPersistence(firebase.auth.Auth.Persistence.SESSION)
       .then(() => {
-        history.push("/todos")
+        const provider = new firebase.auth.GoogleAuthProvider()
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            return history.push("/todos")
+          } else {
+            firebase
+              .auth()
+              .signInWithPopup(provider)
+              .then(() => {
+                history.push("/todos")
+              })
+          }
+        })
       })
   }
+
   return (
     <div>
       <h1>Sign In</h1>
       <button
-        onClick={(e) => {
-          e.preventDefault()
-          googleSignIn()
+        onClick={(event) => {
+          event.preventDefault()
+          signInWithGoogle()
         }}
       >
         Sign In with Google

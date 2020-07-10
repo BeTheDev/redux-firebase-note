@@ -3,6 +3,7 @@ import { useSelector } from "react-redux"
 import AddTodo from "../components/AddToDo"
 import { useFirestoreConnect } from "react-redux-firebase"
 import ToDoItem from "../components/TodoItem"
+
 const Todos = () => {
   const { displayName, uid } = useSelector((state) => state.firebase.auth)
   useFirestoreConnect({
@@ -10,7 +11,7 @@ const Todos = () => {
     storeAs: "todos",
   })
   const todos = useSelector((state) => state.firestore.data.todos)
-  console.log(todos)
+
   return (
     <div>
       <h3>Hello {displayName}</h3>

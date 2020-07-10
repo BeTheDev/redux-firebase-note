@@ -18,6 +18,7 @@ const rrfProps = {
   dispatch: store.dispatch,
   createFirestoreInstance,
 }
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
