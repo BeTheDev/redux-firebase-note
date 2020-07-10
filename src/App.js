@@ -15,7 +15,7 @@ function App() {
         <PrivateRoute path="/todos">
           <Todos />
         </PrivateRoute>
-        <Route path="/">
+        <Route path="/login">
           <SignIn />
         </Route>
       </Switch>

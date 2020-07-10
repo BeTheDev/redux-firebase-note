@@ -13,7 +13,6 @@ const firebaseConfig = {
   measurementId: "G-F4KHZWGBF9",
 }
 
-
 export const rrfConfig = {
   userProfile: "users",
   useFirestoreForProfile: true,
@@ -21,5 +20,6 @@ export const rrfConfig = {
 
 firebase.initializeApp(firebaseConfig)
 firebase.firestore()
+export const auth = firebase.auth()
 
 export default firebase
