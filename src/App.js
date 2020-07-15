@@ -1,8 +1,8 @@
-import React from "react"
-import PrivateRoute from "./components/PrivateRoute"
-import Todos from "./routes/Todos"
-import SignIn from "./routes/SignIn"
-import { Switch, Route } from "react-router-dom"
+import React from "react";
+import PrivateRoute from "./components/PrivateRoute";
+import Todos from "./Routes/Todos";
+import SignIn from "./Routes/SignIn";
+import { Switch, Route } from "react-router-dom";
 function App() {
   return (
     <div
@@ -20,6 +20,6 @@ function App() {
         </Route>
       </Switch>
     </div>
-  )
+  );
 }
-export default App
+export default App;
