@@ -3,6 +3,7 @@ import PrivateRoute from "./components/PrivateRoute"
 import Todos from "./routes/Todos"
 import SignIn from "./routes/SignIn"
 import { Switch, Route } from "react-router-dom"
+
 function App() {
   return (
     <div
@@ -15,7 +16,7 @@ function App() {
         <PrivateRoute path="/todos">
           <Todos />
         </PrivateRoute>
-        <Route path="/login">
+        <Route path="/">
           <SignIn />
         </Route>
       </Switch>
