@@ -7,7 +7,7 @@ const ToDoItem = ({ isDone, title, todoID }) => {
   const firestore = useFirestore()
 
   const { uid } = useSelector((state) => state.firebase.auth)
-  //console.log(isTodoItemDone)
+  console.log(isTodoItemDone)
   const handleChange = (event) => {
     if (event.currentTarget.type === "checkbox") {
       setTodoItemDone(!isTodoItemDone)
